@@ -1,20 +1,22 @@
+// File: src/main/java/com/example/deletedoctor/service/DoctorService.java
 package com.example.deletedoctor.service;
 
 import com.example.deletedoctor.repository.DoctorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DoctorService {
+    private final DoctorRepository doctorRepository;
 
-    @Autowired
-    private DoctorRepository doctorRepository;
+    public DoctorService(DoctorRepository doctorRepository) {
+        this.doctorRepository = doctorRepository;
+    }
 
-    public void deleteDoctor(Long id) {
+    public boolean deleteDoctor(Long id) {
         if (doctorRepository.existsById(id)) {
             doctorRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Doctor not found with id: " + id);
+            return true; // Doctor eliminado exitosamente
         }
+        return false; // Doctor no encontrado
     }
 }

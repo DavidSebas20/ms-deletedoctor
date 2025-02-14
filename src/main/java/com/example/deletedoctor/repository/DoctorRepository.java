@@ -1,9 +1,8 @@
+// File: src/main/java/com/example/deletedoctor/repository/DoctorRepository.java
 package com.example.deletedoctor.repository;
 
 import com.example.deletedoctor.entity.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 }
